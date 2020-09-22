@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Weather App</title>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <div id="current-weather"></div>
+        <section id="main-content">
+            <form action="">
+                <input type="text" id="entry" />
+                <button type="submit" id="search">Search</button>
+            </form>
+
+            <div id="hourly-weather"></div>
+            <div id="daily-weather"></div>
+        </section>
+        <script src="js/layout.js" defer onload="draw()"></script>
+        <script src="js/script.js" defer onload="app.fetchData()"></script>
+    </body>
+</html>
