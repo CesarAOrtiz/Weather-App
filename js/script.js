@@ -143,7 +143,7 @@ function search(e) {
     e.preventDefault();
     let city = document.getElementById("entry").value;
     if (city) {
-        app.url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${app.key}&units=metric&lang=${app.lang}`;
+        app.url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${app.key}&units=metric&lang=${app.lang}`;
         app.fetchData();
     }
 }
