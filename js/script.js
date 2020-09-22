@@ -6,7 +6,7 @@
 app = {};
 app.key = "2e908b1e1d7bd12a92475086f0728778";
 app.lang = window.navigator.language || navigator.browserLanguage;
-app.url = `http://api.openweathermap.org/data/2.5/weather?q=Santo Domingo&appid=${app.key}&units=metric&lang=${app.lang}`;
+app.url = `https://api.openweathermap.org/data/2.5/weather?q=Santo Domingo&appid=${app.key}&units=metric&lang=${app.lang}`;
 
 app.fetchData = async function () {
     fetch(app.url)
