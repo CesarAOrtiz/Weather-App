@@ -7,7 +7,26 @@
 body {
     background: linear-gradient(to right, rgba(127, 196, 230, 1) 0%, rgba(47, 158, 218, 1) 41%, rgb(2, 107, 163) 100%);
     font: "Roboto", sans-serif;
+
 }
+
+header {
+    width: 100%;
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    position: relative;
+    font-size: 2em;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-decoration: none;
+}
+
 
 section {
     display: flex;
@@ -38,7 +57,6 @@ form {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 10px;
 }
 
 #hourly-weather {
@@ -113,6 +131,12 @@ p {
 
 h1 {
     font-size: 2rem;
+}
+
+#temp,
+#temps {
+    font-size: 1.5em;
+    font-weight: 700;
 }
 
 @media(max-width: 991px) {

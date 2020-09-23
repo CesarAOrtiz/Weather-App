@@ -22,10 +22,10 @@ async function fetchWeather() {
     fetch(app.urlAll)
         .then((response) => response.json())
         .then((data) => (app.predictions = data))
-        .then(app.saveHourly)
-        .then(app.showHourly)
         .then(app.saveDaily)
         .then(app.showDaily)
+        .then(app.saveHourly)
+        .then(app.showHourly)
         .catch((error) => console.log(error));
 }
 
@@ -47,6 +47,7 @@ app.processData = function () {
             tempMax: app.weather.main.temp_max.toFixed(0) + "°C",
             tempMin: app.weather.main.temp_min.toFixed(0) + "°C",
         };
+
         app.lat = app.weather.coord.lat;
         app.lon = app.weather.coord.lon;
         app.urlAll = `https://api.openweathermap.org/data/2.5/onecall?lat=${app.lat}&lon=${app.lon}&exclude=current,minutely&appid=${app.key}&units=metric&lang=${app.lang}`;
@@ -55,19 +56,18 @@ app.processData = function () {
 
 app.showData = function () {
     if (app.currentWeather.city) {
-        html = `            
-        <div id="weather">
-            <h1>${app.currentWeather.city}</h1>
-            <p id="temp">${app.currentWeather.temp}</p>
-                <img src="icons/${
-                    app.currentWeather.icon
-                }.png" alt="Weather icon" />
-            <p>${app.currentWeather.description}</p>
-            <p id="temps">${
-                app.currentWeather.tempMin + " / " + app.currentWeather.tempMax
-            }</p>
-        </div>`;
-        document.getElementById("current-weather").innerHTML = html;
+        let city = document.getElementById("city");
+        let temp = document.getElementById("temp");
+        let icon = document.getElementById("icon");
+        let description = document.getElementById("description");
+        let temps = document.getElementById("temps");
+        city.textContent = app.currentWeather.city;
+        temp.textContent = app.currentWeather.temp;
+        icon.innerHTML = `<img src="icons/${app.currentWeather.icon}.png" alt="Weather icon"/>`;
+        description.textContent = app.currentWeather.description;
+        temps.textContent = `${
+            app.currentWeather.tempMin + " / " + app.currentWeather.tempMax
+        }`;
     }
 };
 
@@ -95,16 +95,16 @@ app.saveDaily = function () {
 
 app.showDaily = function () {
     if (app.daily) {
-        html = "";
+        let count = 0;
         app.daily.forEach((day) => {
-            html += `
-            <div class="daily-weather-list">
-                <p>${day.date}</p>
-                    <img src="icons/${day.icon}.png" alt="Weather icon" />
-                <p>${day.tempMin + " / " + day.tempMax}C</p>
-            </div>`;
+            let date = document.getElementById(`daily-date-${count}`);
+            let icon = document.getElementById(`daily-icon-${count}`);
+            let temp = document.getElementById(`daily-temps-${count}`);
+            date.textContent = day.date;
+            icon.innerHTML = `<img src="icons/${day.icon}.png" alt="Weather icon"/>`;
+            temp.textContent = `${day.tempMin + " / " + day.tempMax}`;
+            count++;
         });
-        document.getElementById("daily-weather").innerHTML = html;
     }
 };
 
@@ -123,16 +123,17 @@ app.saveHourly = function () {
 
 app.showHourly = function () {
     if (app.hourly) {
+        let count = 0;
         html = "";
         app.hourly.forEach((hour) => {
-            html += `
-            <div class="hourly-weather-list">
-                <img width=100px height=100px src="icons/${hour.icon}.png" alt="Weather icon"/>
-                <p>${hour.temp}</p>
-                <p>${hour.date}</p>
-            </div>`;
+            let icon = document.getElementById(`hourly-icon-${count}`);
+            let temp = document.getElementById(`hourly-temp-${count}`);
+            let date = document.getElementById(`hourly-date-${count}`);
+            icon.innerHTML = `<img width="100px" height="100px" src="icons/${hour.icon}.png" alt="Weather icon" />`;
+            temp.textContent = hour.temp;
+            date.textContent = hour.date;
+            count++;
         });
-        document.getElementById("hourly-weather").innerHTML = html;
     }
 };
 

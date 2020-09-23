@@ -7,18 +7,20 @@
         <link rel="stylesheet" href="css/style.css" />
     </head>
     <body>
+        <header id="header">
+            <a href="#" class="logo">Weather</a>
+        </header>
         <section id="main-content">
-            <section></section>
+            <section>
+                <div id="current-weather"></div>
                 <form action="GET">
                     <input type="text" id="entry" />
                     <button type="submit" id="search">Search</button>
                 </form>
             </section>
-            <section><div id="current-weather"></div></section>
             <section><div id="hourly-weather"></div></section>
             <section><div id="daily-weather"></div></section>
         </section>
-        <script src="js/layout.js" defer onload="draw()"></script>
         <script src="js/script.js" defer onload="app.fetchData()"></script>
     </body>
 </html>
