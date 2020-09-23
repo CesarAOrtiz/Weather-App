@@ -8,13 +8,15 @@
     </head>
     <body>
         <section id="main-content">
-            <form action="GET">
-                <input type="text" id="entry" />
-                <button type="submit" id="search">Search</button>
-            </form>
-            <div id="current-weather"></div>
-            <div id="hourly-weather"></div>
-            <div id="daily-weather"></div>
+            <section></section>
+                <form action="GET">
+                    <input type="text" id="entry" />
+                    <button type="submit" id="search">Search</button>
+                </form>
+            </section>
+            <section><div id="current-weather"></div></section>
+            <section><div id="hourly-weather"></div></section>
+            <section><div id="daily-weather"></div></section>
         </section>
         <script src="js/layout.js" defer onload="draw()"></script>
         <script src="js/script.js" defer onload="app.fetchData()"></script>

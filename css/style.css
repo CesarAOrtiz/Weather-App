@@ -9,13 +9,12 @@ body {
     font: "Roboto", sans-serif;
 }
 
-#main-content {
+section {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 100%;
-    background: rgb(245, 222, 179, 0.0);
 }
 
 form {
@@ -45,9 +44,8 @@ form {
 #hourly-weather {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    padding: 10px 10px;
     margin: 5px 5px;
-    max-width: 810px;
+    width: 810px;
     overflow: auto;
     overflow: scroll;
     overflow-y: hidden;
@@ -56,9 +54,8 @@ form {
 #daily-weather {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    padding: 10px 0px;
-    margin: 5px 5px;
-    max-width: 850px;
+    margin: 10px 0px 10px 10px;
+    width: 850px;
     overflow: auto;
     overflow: scroll;
     overflow-y: hidden;
