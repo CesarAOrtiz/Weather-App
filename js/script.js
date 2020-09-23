@@ -100,8 +100,10 @@ app.showDaily = function () {
             html += `
             <div class="daily-weather-list">
                 <p>${day.date}</p>
-                    <img src="icons/${day.icon}.png" alt="Weather icon" />
                 <p>${day.tempMin + " / " + day.tempMax}C</p>
+                <img width=50px height=50px src="icons/${
+                    day.icon
+                }.png" alt="Weather icon" />
             </div>`;
         });
         document.getElementById("daily-weather").innerHTML = html;

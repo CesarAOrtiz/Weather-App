@@ -61,8 +61,8 @@ form {
 
 #hourly-weather {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    margin: 5px 5px;
+    grid-template-columns: repeat(24, 1fr);
+    margin: 10px 5px 5px 5px;
     width: 810px;
     overflow: auto;
     overflow: scroll;
@@ -71,8 +71,8 @@ form {
 
 #daily-weather {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    margin: 10px 0px 10px 10px;
+    grid-template-columns: repeat(8, 1fr);
+    margin: 10px 10px 10px 10px;
     width: 850px;
     overflow: auto;
     overflow: scroll;
@@ -90,6 +90,7 @@ form {
     margin: 0px 0px 10px 0px;
     width: 850px;
     border-radius: 20px;
+    box-shadow: 1px 13px 11px rgb(0, 0, 0, 0.3);
 }
 
 .hourly-weather-list {
@@ -139,14 +140,19 @@ h1 {
     font-weight: 700;
 }
 
+@media(min-height: 991px) {
+    #daily-weather {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
 @media(max-width: 991px) {
     #daily-weather {
-        grid-template-columns: repeat(8, 1fr);
         max-width: 675px;
     }
 
     #hourly-weather {
-        max-width: 550px;
+        max-width: 640px;
     }
 
     #weather {
@@ -156,7 +162,6 @@ h1 {
 
 @media(max-width: 715px) {
     #daily-weather {
-        grid-template-columns: repeat(8, 1fr);
         max-width: 460px;
     }
 
@@ -171,7 +176,6 @@ h1 {
 
 @media(max-width: 480px) {
     #daily-weather {
-        grid-template-columns: repeat(8, 1fr);
         max-width: 290px;
     }
 
@@ -190,7 +194,6 @@ h1 {
     }
 
     #daily-weather {
-        grid-template-columns: repeat(8, 1fr);
         max-width: 260px;
     }
 
@@ -205,7 +208,6 @@ h1 {
     }
 
     #daily-weather {
-        grid-template-columns: repeat(8, 1fr);
         max-width: 250px;
     }
 
