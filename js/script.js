@@ -1,5 +1,5 @@
 (function init() {
-    document.getElementById("entry").placeholder = "Search";
+    document.getElementById("entry").placeholder = "Search for a city";
     document.getElementById("search").addEventListener("click", search, false);
 })();
 
@@ -45,7 +45,7 @@ app.processData = function () {
             city: app.weather.name,
             temp: app.weather.main.temp.toFixed(0) + "°C",
             icon: app.weather.weather[0].icon,
-            description: app.weather.weather[0].description,
+            description: app.weather.weather[0].description.toUpperCase(),
             tempMax: app.weather.main.temp_max.toFixed(0) + "°C",
             tempMin: app.weather.main.temp_min.toFixed(0) + "°C",
         };
@@ -85,7 +85,7 @@ app.saveDaily = function () {
         };
         app.predictions.daily.forEach((day) => {
             app.daily.push({
-                date: date.toLocaleDateString(app.lang, options),
+                date: date.toLocaleDateString(app.lang, options).toUpperCase(),
                 icon: day.weather[0].icon,
                 tempMin: day.temp.min.toFixed(0) + "°C",
                 tempMax: day.temp.max.toFixed(0) + "°C",

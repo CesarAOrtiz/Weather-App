@@ -1,6 +1,6 @@
 function layoutCurrentWeather() {
     html = `            
-    <div class="weather">
+    <div id="weather">
         <h1 id="city">?</h1>
         <p id="temp">-°C</p>
         <div id="icon">
