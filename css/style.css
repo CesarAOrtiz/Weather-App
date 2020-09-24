@@ -19,7 +19,6 @@ header {
 }
 
 header .logo {
-    position: relative;
     font-size: 2em;
     color: #fff;
     text-transform: uppercase;
@@ -37,7 +36,7 @@ section {
 }
 
 form {
-    margin: 20px 0px;
+    margin: 0px 0px 20px 0px;
 }
 
 #entry,
@@ -87,10 +86,10 @@ form {
     flex-direction: column;
     background: linear-gradient(to bottom, rgb(224, 223, 223) 0%, rgba(249, 249, 249, 1) 100%);
     padding: 20px 20px;
-    margin: 0px 0px 10px 0px;
+    margin: 0px 0px 20px 0px;
     width: 850px;
     border-radius: 20px;
-    box-shadow: 1px 13px 11px rgb(0, 0, 0, 0.3);
+    box-shadow: 1px 10px 11px rgb(0, 0, 0, 0.3);
 }
 
 .hourly-weather-list {
@@ -100,10 +99,10 @@ form {
     flex-direction: column;
     background-color: rgba(250, 245, 245, 0.5);
     width: 125px;
-    margin: 0px 10px 15px 0px;
+    margin: 0px 10px 20px 0px;
     border-radius: 10px;
     padding: 0px 0px 5px 0px;
-    box-shadow: 1px 13px 11px rgb(0, 0, 0, 0.3);
+    box-shadow: 1px 8px 11px rgb(0, 0, 0, 0.3);
 }
 
 .daily-weather-list {
@@ -113,10 +112,10 @@ form {
     flex-direction: column;
     background-color: white;
     width: 200px;
-    margin: 0px 10px 15px 0px;
+    margin: 0px 10px 20px 0px;
     border-radius: 10px;
     padding: 5px 0px;
-    box-shadow: 1px 13px 11px rgb(0, 0, 0, 0.3);
+    box-shadow: 1px 8px 11px rgb(0, 0, 0, 0.3);
 }
 
 h1,
@@ -138,6 +137,23 @@ h1 {
 #temps {
     font-size: 1.5em;
     font-weight: 700;
+}
+
+#main-footer {
+    width: 100%;
+    color: white;
+    padding: 10px;
+}
+
+#main-footer div {
+    margin: auto;
+    text-align: center;
+}
+
+@media(min-width:991px) and (min-height: 600px) {
+    #daily-weather {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 @media(min-height: 991px) {
