@@ -1,4 +1,4 @@
-@import url("http://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
 
 * {
     margin: 0;
@@ -7,7 +7,7 @@
 }
 
 body {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 header {
@@ -26,7 +26,11 @@ header .logo {
 header,
 #main-footer div {
     border-radius: 20px;
-    background: linear-gradient(to bottom, rgb(224, 223, 223) 0%, rgba(249, 249, 249, 1) 100%);
+    background: linear-gradient(
+        to bottom,
+        rgb(224, 223, 223) 0%,
+        rgba(249, 249, 249, 1) 100%
+    );
     width: 200px;
 }
 
@@ -87,7 +91,11 @@ form {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: linear-gradient(to bottom, rgb(224, 223, 223) 0%, rgba(249, 249, 249, 1) 100%);
+    background: linear-gradient(
+        to bottom,
+        rgb(224, 223, 223) 0%,
+        rgba(249, 249, 249, 1) 100%
+    );
     padding: 20px 20px;
     margin: 0px 0px 20px 0px;
     width: 850px;
@@ -128,7 +136,6 @@ p {
 }
 
 p {
-
     font-size: 1rem;
 }
 
@@ -142,27 +149,25 @@ h1 {
     font-weight: 700;
 }
 
-
-
 #main-footer div {
     padding: 5px;
     text-align: center;
     margin: 15px auto;
 }
 
-@media(min-width:991px) and (min-height: 600px) {
+@media (min-width: 991px) and (min-height: 600px) {
     #daily-weather {
         grid-template-columns: repeat(4, 1fr);
     }
 }
 
-@media(min-height: 991px) {
+@media (min-height: 991px) {
     #daily-weather {
         grid-template-columns: repeat(4, 1fr);
     }
 }
 
-@media(max-width: 991px) {
+@media (max-width: 991px) {
     #daily-weather {
         max-width: 675px;
     }
@@ -176,7 +181,7 @@ h1 {
     }
 }
 
-@media(max-width: 715px) {
+@media (max-width: 715px) {
     #daily-weather {
         max-width: 460px;
     }
@@ -190,7 +195,7 @@ h1 {
     }
 }
 
-@media(max-width: 480px) {
+@media (max-width: 480px) {
     #daily-weather {
         max-width: 290px;
     }
@@ -204,7 +209,7 @@ h1 {
     }
 }
 
-@media(max-width: 340px) {
+@media (max-width: 340px) {
     #weather {
         max-width: 260px;
     }
@@ -218,7 +223,7 @@ h1 {
     }
 }
 
-@media(max-width: 280px) {
+@media (max-width: 280px) {
     #weather {
         max-width: 250px;
     }
