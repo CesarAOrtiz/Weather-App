@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,7 +7,7 @@
 }
 
 body {
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 header {
@@ -29,6 +31,7 @@ header,
             rgb(224, 223, 223) 0%,
             rgba(249, 249, 249, 1) 100%);
     width: 200px;
+    font-style: italic;
 }
 
 section {
@@ -52,6 +55,13 @@ form {
     outline: none;
 }
 
+#entry {
+    width: 400px;
+    background: linear-gradient(to bottom,
+            rgb(224, 223, 223) 0%,
+            rgba(249, 249, 249, 1) 100%);
+}
+
 #search {
     cursor: pointer;
 }
@@ -67,9 +77,7 @@ form {
     grid-template-columns: repeat(24, 1fr);
     margin: 10px 5px 5px 5px;
     width: 810px;
-    overflow: auto;
-    overflow: scroll;
-    overflow-y: hidden;
+    font-style: italic;
 }
 
 #daily-weather {
@@ -77,6 +85,11 @@ form {
     grid-template-columns: repeat(8, 1fr);
     margin: 10px 10px 10px 10px;
     width: 850px;
+    font-style: italic;
+}
+
+#hourly-weather,
+#daily-weather {
     overflow: auto;
     overflow: scroll;
     overflow-y: hidden;
@@ -138,16 +151,15 @@ h1 {
     font-size: 2rem;
 }
 
-#temp,
-#temps {
-    font-size: 1.5em;
+#temp {
+    font-size: 2em;
     font-weight: 700;
 }
 
 #main-footer div {
     padding: 5px;
     text-align: center;
-    margin: 15px auto;
+    margin: 0px auto 30px auto;
 }
 
 @media (min-width: 991px) and (min-height: 600px) {
@@ -177,6 +189,10 @@ h1 {
 }
 
 @media (max-width: 715px) {
+    #entry {
+        width: 300px;
+    }
+
     #daily-weather {
         max-width: 460px;
     }
@@ -191,6 +207,10 @@ h1 {
 }
 
 @media (max-width: 480px) {
+    #entry {
+        width: 200px;
+    }
+
     #daily-weather {
         max-width: 290px;
     }
@@ -219,6 +239,10 @@ h1 {
 }
 
 @media (max-width: 280px) {
+    #entry {
+        width: 150px;
+    }
+
     #weather {
         max-width: 250px;
     }
