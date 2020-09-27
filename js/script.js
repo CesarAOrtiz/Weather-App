@@ -69,7 +69,7 @@ app.showData = function () {
         </div>`;
         document.getElementById(
             "bg"
-        ).style.background = `url(../bg/${app.currentWeather.icon}.jpg)`;
+        ).style.background = `url(bg/${app.currentWeather.icon}.jpg)`;
         document.getElementById("bg").style.backgroundRepeat = `no-repeat`;
         document.getElementById("bg").style.backgroundSize = `cover`;
         //.;
