@@ -146,8 +146,8 @@ h1 {
 
 #main-footer div {
     padding: 5px;
-    margin: auto;
     text-align: center;
+    margin: 15px auto;
 }
 
 @media(min-width:991px) and (min-height: 600px) {
