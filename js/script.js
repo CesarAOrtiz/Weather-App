@@ -1,12 +1,88 @@
 (function init() {
     document.getElementById("entry").placeholder = "Search for a city";
     document.getElementById("search").addEventListener("click", search, false);
+    function layoutCurrentWeather() {
+        html = `            
+        <div id="weather">
+            <h1 id="city">-?-</h1>
+            <p id="temp">-°C</p>
+            <div id="icon">
+                <img src="icons/unknown.png" alt="Weather icon" />
+            </div>
+            <p id="description">?</p>
+            <p id="temps">-°C / -°C</p>
+        </div>`;
+        document.getElementById("current-weather").innerHTML = html;
+    }
+
+    function layoutHourlyWeather() {
+        html = "";
+        for (var i = 0; i < 24; i++) {
+            html += `
+            <div class="hourly-weather-list">
+                <div id="hourly-icon-${i}">
+                    <img width=100px height=100px src="icons/unknown.png" alt="Weather icon"/>
+                </div>
+                    <p id="hourly-temp-${i}">-°C</p>
+                    <p id="hourly-date-${i}">-/-/-</p>
+                </div>
+            </div>`;
+        }
+        document.getElementById("hourly-weather").innerHTML = html;
+    }
+
+    function layoutDailyWeather() {
+        html = "";
+        for (var i = 0; i < 8; i++) {
+            html += `
+        <div class="daily-weather-list">
+            <p id="daily-date-${i}">-/-/-</p>
+            <p id="daily-temps-${i}">-°C / -°C</p>
+            <div id="daily-icon-${i}">
+                <img src="icons/unknown.png" alt="Weather icon" />
+            </div>
+        </div>`;
+        }
+        document.getElementById("daily-weather").innerHTML = html;
+    }
+
+    function draw() {
+        layoutCurrentWeather();
+        layoutHourlyWeather();
+        layoutDailyWeather();
+    }
+
+    draw();
+
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(setPosition, showError, {
+            enableHighAccuracy: true,
+        });
+    } else {
+        // document.querySelector("#notification").style.display = "block";
+        // document.querySelector("#notification").innerHTML = "<p>Browser doesn't Support Geolocation</p>";
+    }
+
+    function setPosition(position) {
+        let lat = position.coords.latitude;
+        let lon = position.coords.longitude;
+        console.log(lat, lon);
+        app.urlAll = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely${app.conf}`;
+        app.url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}${app.conf}`;
+        app.fetchData();
+        app.fetchWeather();
+    }
+
+    function showError(error) {
+        // document.querySelector("#notification").style.display = "block";
+        // document.querySelector("#notification").innerHTML = `<p> ${error.message} </p>`;
+    }
 })();
 
 app = {};
 app.key = "2e908b1e1d7bd12a92475086f0728778";
 app.lang = window.navigator.language || navigator.browserLanguage;
-app.url = `https://api.openweathermap.org/data/2.5/weather?q=Santo Domingo&appid=${app.key}&units=metric&lang=${app.lang}`;
+app.conf = `&appid=${app.key}&units=metric&lang=${app.lang}`;
 
 app.fetchData = async function () {
     fetch(app.url)
@@ -14,20 +90,20 @@ app.fetchData = async function () {
         .then((data) => (app.weather = data))
         .then(app.processData)
         .then(app.showData)
-        .then(fetchWeather)
+        .then(app.showBG)
         .catch((error) => console.log(error));
 };
 
-async function fetchWeather() {
+app.fetchWeather = async function () {
     fetch(app.urlAll)
         .then((response) => response.json())
         .then((data) => (app.predictions = data))
         .then(app.saveHourly)
-        .then(app.showHourly)
         .then(app.saveDaily)
+        .then(app.showHourly)
         .then(app.showDaily)
         .catch((error) => console.log(error));
-}
+};
 
 app.formating = function (unix_timestamp) {
     var date = new Date(unix_timestamp * 1000);
@@ -35,6 +111,14 @@ app.formating = function (unix_timestamp) {
     var minutes = "0" + date.getMinutes();
     var formattedTime = hours + ":" + minutes.substr(-2);
     return formattedTime;
+};
+
+app.showBG = function () {
+    document.getElementById(
+        "bg"
+    ).style.background = `url(bg/${app.currentWeather.icon}.jpg)`;
+    document.getElementById("bg").style.backgroundRepeat = `no-repeat`;
+    document.getElementById("bg").style.backgroundSize = `cover`;
 };
 
 app.processData = function () {
@@ -55,19 +139,18 @@ app.processData = function () {
 
 app.showData = function () {
     if (app.currentWeather.city) {
-        html = `            
-        <div id="weather">
-            <h1>${app.currentWeather.city}</h1>
-            <p id="temp">${app.currentWeather.temp}</p>
-                <img src="icons/${
-                    app.currentWeather.icon
-                }.png" alt="Weather icon" />
-            <p>${app.currentWeather.description}</p>
-            <p id="temps">${
-                app.currentWeather.tempMin + " / " + app.currentWeather.tempMax
-            }</p>
-        </div>`;
-        document.getElementById("current-weather").innerHTML = html;
+        let city = document.getElementById("city");
+        let temp = document.getElementById("temp");
+        let icon = document.getElementById("icon");
+        let description = document.getElementById("description");
+        let temps = document.getElementById("temps");
+        city.textContent = app.currentWeather.city;
+        temp.textContent = app.currentWeather.temp;
+        icon.innerHTML = `<img src="icons/${app.currentWeather.icon}.png" alt="Weather icon"/>`;
+        description.textContent = app.currentWeather.description;
+        temps.textContent = `${
+            app.currentWeather.tempMin + " / " + app.currentWeather.tempMax
+        }`;
     }
 };
 
@@ -86,16 +169,17 @@ app.saveHourly = function () {
 
 app.showHourly = function () {
     if (app.hourly) {
+        let count = 0;
         html = "";
         app.hourly.forEach((hour) => {
-            html += `
-            <div class="hourly-weather-list">
-                <img width=100px height=100px src="icons/${hour.icon}.png" alt="Weather icon"/>
-                <p>${hour.temp}</p>
-                <p>${hour.date}</p>
-            </div>`;
+            let icon = document.getElementById(`hourly-icon-${count}`);
+            let temp = document.getElementById(`hourly-temp-${count}`);
+            let date = document.getElementById(`hourly-date-${count}`);
+            icon.innerHTML = `<img width="100px" height="100px" src="icons/${hour.icon}.png" alt="Weather icon" />`;
+            temp.textContent = hour.temp;
+            date.textContent = hour.date;
+            count++;
         });
-        document.getElementById("hourly-weather").innerHTML = html;
     }
 };
 
@@ -120,23 +204,16 @@ app.saveDaily = function () {
 
 app.showDaily = function () {
     if (app.daily) {
-        html = "";
+        let count = 0;
         app.daily.forEach((day) => {
-            html += `
-            <div class="daily-weather-list">
-                <p>${day.date}</p>
-                <p>${day.tempMin + " / " + day.tempMax}C</p>
-                <img width=50px height=50px src="icons/${
-                    day.icon
-                }.png" alt="Weather icon" />
-            </div>`;
+            let date = document.getElementById(`daily-date-${count}`);
+            let icon = document.getElementById(`daily-icon-${count}`);
+            let temp = document.getElementById(`daily-temps-${count}`);
+            date.textContent = day.date;
+            icon.innerHTML = `<img width=50px height=50px src="icons/${day.icon}.png" alt="Weather icon"/>`;
+            temp.textContent = `${day.tempMin + " / " + day.tempMax}`;
+            count++;
         });
-        document.getElementById("daily-weather").innerHTML = html;
-        document.getElementById(
-            "bg"
-        ).style.background = `url(bg/${app.currentWeather.icon}.jpg)`;
-        document.getElementById("bg").style.backgroundRepeat = `no-repeat`;
-        document.getElementById("bg").style.backgroundSize = `cover`;
     }
 };
 
@@ -144,7 +221,8 @@ function search(e) {
     e.preventDefault();
     let city = document.getElementById("entry").value;
     if (city) {
-        app.url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${app.key}&units=metric&lang=${app.lang}`;
+        app.url = `https://api.openweathermap.org/data/2.5/weather?q=${city}${app.conf}`;
         app.fetchData();
+        app.fetchWeather();
     }
 }

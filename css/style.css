@@ -9,8 +9,9 @@ body {
 }
 
 header {
-    margin: 10px 30px;
+    margin: 20px 30px;
     text-align: center;
+    box-shadow: 1px 5px 11px rgb(0, 0, 0, 0.3);
 }
 
 header .logo {
@@ -24,11 +25,9 @@ header .logo {
 header,
 #main-footer div {
     border-radius: 20px;
-    background: linear-gradient(
-        to bottom,
-        rgb(224, 223, 223) 0%,
-        rgba(249, 249, 249, 1) 100%
-    );
+    background: linear-gradient(to bottom,
+            rgb(224, 223, 223) 0%,
+            rgba(249, 249, 249, 1) 100%);
     width: 200px;
 }
 
@@ -89,11 +88,9 @@ form {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: linear-gradient(
-        to bottom,
-        rgb(224, 223, 223) 0%,
-        rgba(249, 249, 249, 1) 100%
-    );
+    background: linear-gradient(to bottom,
+            rgb(224, 223, 223) 0%,
+            rgba(249, 249, 249, 1) 100%);
     padding: 20px 20px;
     margin: 0px 0px 20px 0px;
     width: 850px;
