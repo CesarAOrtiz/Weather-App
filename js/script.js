@@ -67,52 +67,7 @@ app.showData = function () {
                 app.currentWeather.tempMin + " / " + app.currentWeather.tempMax
             }</p>
         </div>`;
-        document.getElementById(
-            "bg"
-        ).style.background = `url(bg/${app.currentWeather.icon}.jpg)`;
-        document.getElementById("bg").style.backgroundRepeat = `no-repeat`;
-        document.getElementById("bg").style.backgroundSize = `cover`;
-        //.;
         document.getElementById("current-weather").innerHTML = html;
-    }
-};
-
-app.saveDaily = function () {
-    if (app.predictions.daily) {
-        app.daily = [];
-        let date = new Date();
-        const options = {
-            weekday: "long",
-            //year: "numeric",
-            //month: "long",
-            //day: "numeric",
-        };
-        app.predictions.daily.forEach((day) => {
-            app.daily.push({
-                date: date.toLocaleDateString(app.lang, options).toUpperCase(),
-                icon: day.weather[0].icon,
-                tempMin: day.temp.min.toFixed(0) + "°C",
-                tempMax: day.temp.max.toFixed(0) + "°C",
-            });
-            date.setDate(date.getDate() + 1);
-        });
-    }
-};
-
-app.showDaily = function () {
-    if (app.daily) {
-        html = "";
-        app.daily.forEach((day) => {
-            html += `
-            <div class="daily-weather-list">
-                <p>${day.date}</p>
-                <p>${day.tempMin + " / " + day.tempMax}C</p>
-                <img width=50px height=50px src="icons/${
-                    day.icon
-                }.png" alt="Weather icon" />
-            </div>`;
-        });
-        document.getElementById("daily-weather").innerHTML = html;
     }
 };
 
@@ -141,6 +96,47 @@ app.showHourly = function () {
             </div>`;
         });
         document.getElementById("hourly-weather").innerHTML = html;
+    }
+};
+
+app.saveDaily = function () {
+    if (app.predictions.daily) {
+        app.daily = [];
+        let date = new Date();
+        const options = {
+            weekday: "long",
+        };
+        app.predictions.daily.forEach((day) => {
+            app.daily.push({
+                date: date.toLocaleDateString(app.lang, options).toUpperCase(),
+                icon: day.weather[0].icon,
+                tempMin: day.temp.min.toFixed(0) + "°C",
+                tempMax: day.temp.max.toFixed(0) + "°C",
+            });
+            date.setDate(date.getDate() + 1);
+        });
+    }
+};
+
+app.showDaily = function () {
+    if (app.daily) {
+        html = "";
+        app.daily.forEach((day) => {
+            html += `
+            <div class="daily-weather-list">
+                <p>${day.date}</p>
+                <p>${day.tempMin + " / " + day.tempMax}C</p>
+                <img width=50px height=50px src="icons/${
+                    day.icon
+                }.png" alt="Weather icon" />
+            </div>`;
+        });
+        document.getElementById("daily-weather").innerHTML = html;
+        document.getElementById(
+            "bg"
+        ).style.background = `url(bg/${app.currentWeather.icon}.jpg)`;
+        document.getElementById("bg").style.backgroundRepeat = `no-repeat`;
+        document.getElementById("bg").style.backgroundSize = `cover`;
     }
 };
 
