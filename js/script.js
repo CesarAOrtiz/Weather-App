@@ -67,6 +67,12 @@ app.showData = function () {
                 app.currentWeather.tempMin + " / " + app.currentWeather.tempMax
             }</p>
         </div>`;
+        document.getElementById(
+            "bg"
+        ).style.background = `url(../bg/${app.currentWeather.icon}.jpg)`;
+        document.getElementById("bg").style.backgroundRepeat = `no-repeat`;
+        document.getElementById("bg").style.backgroundSize = `cover`;
+        //.;
         document.getElementById("current-weather").innerHTML = html;
     }
 };

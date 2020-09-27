@@ -1,3 +1,5 @@
+@import url("http://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+
 * {
     margin: 0;
     padding: 0;
@@ -5,27 +7,28 @@
 }
 
 body {
-    background: linear-gradient(to right, rgba(127, 196, 230, 1) 0%, rgba(47, 158, 218, 1) 41%, rgb(2, 107, 163) 100%);
-    font: "Roboto", sans-serif;
-
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 header {
-    width: 100%;
-    padding: 10px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin: 10px 30px;
+    text-align: center;
 }
 
 header .logo {
     font-size: 2em;
-    color: #fff;
     text-transform: uppercase;
     font-weight: 700;
     text-decoration: none;
+    color: #000;
 }
 
+header,
+#main-footer div {
+    border-radius: 20px;
+    background: linear-gradient(to bottom, rgb(224, 223, 223) 0%, rgba(249, 249, 249, 1) 100%);
+    width: 200px;
+}
 
 section {
     display: flex;
@@ -139,13 +142,10 @@ h1 {
     font-weight: 700;
 }
 
-#main-footer {
-    width: 100%;
-    color: white;
-    padding: 10px;
-}
+
 
 #main-footer div {
+    padding: 5px;
     margin: auto;
     text-align: center;
 }
