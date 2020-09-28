@@ -45,46 +45,39 @@
         }
         document.getElementById("daily-weather").innerHTML = html;
     }
-
-    function draw() {
-        layoutCurrentWeather();
-        layoutHourlyWeather();
-        layoutDailyWeather();
-    }
-
-    draw();
-
-    if ("geolocation" in navigator) {
-        navigator.geolocation.getCurrentPosition(setPosition, showError, {
-            enableHighAccuracy: true,
-        });
-    } else {
-        document.getElementById("notification").style.display = "block";
-        document.getElementById("notification").innerHTML =
-            "<p>Browser doesn't Support Geolocation</p>";
-    }
-
-    function setPosition(position) {
-        let lat = position.coords.latitude;
-        let lon = position.coords.longitude;
-        let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}${app.conf}`;
-        app.fetchData(url);
-        let urlAll = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely${app.conf}`;
-        app.fetchWeather(urlAll);
-    }
-
-    function showError(error) {
-        document.getElementById("notification").style.display = "block";
-        document.getElementById(
-            "notification"
-        ).innerHTML = `<p> ${error.message} </p>`;
-    }
+    layoutCurrentWeather();
+    layoutHourlyWeather();
+    layoutDailyWeather();
 })();
+
+if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(setPosition, showError, {
+        enableHighAccuracy: true,
+    });
+} else {
+    showError("Browser doesn't Support Geolocation");
+}
 
 app = {};
 app.key = "2e908b1e1d7bd12a92475086f0728778";
 app.lang = window.navigator.language || navigator.browserLanguage;
 app.conf = `&appid=${app.key}&units=metric&lang=${app.lang}`;
+
+function setPosition(position) {
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
+    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}${app.conf}`;
+    app.fetchData(url);
+    let urlAll = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely${app.conf}`;
+    app.fetchWeather(urlAll);
+}
+
+function showError(error) {
+    document.getElementById("notification").style.display = "block";
+    document.getElementById(
+        "notification"
+    ).innerHTML = `<p> ${error.message} </p>`;
+}
 
 app.fetchData = async function (url) {
     fetch(url)
@@ -93,7 +86,7 @@ app.fetchData = async function (url) {
         .then(app.processData)
         .then(app.showData)
         .then(app.showBG)
-        .catch((error) => console.log(error));
+        .catch((error) => showError(error));
 };
 
 app.fetchWeather = async function (url) {
@@ -104,7 +97,7 @@ app.fetchWeather = async function (url) {
         .then(app.saveDaily)
         .then(app.showHourly)
         .then(app.showDaily)
-        .catch((error) => console.log(error));
+        .catch((error) => showError(error));
 };
 
 app.formating = function (unix_timestamp) {
