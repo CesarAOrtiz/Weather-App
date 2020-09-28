@@ -67,10 +67,10 @@
     function setPosition(position) {
         let lat = position.coords.latitude;
         let lon = position.coords.longitude;
-        app.urlAll = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely${app.conf}`;
-        app.url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}${app.conf}`;
-        app.fetchData();
-        app.fetchWeather();
+        let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}${app.conf}`;
+        app.fetchData(url);
+        let urlAll = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely${app.conf}`;
+        app.fetchWeather(urlAll);
     }
 
     function showError(error) {
@@ -86,8 +86,8 @@ app.key = "2e908b1e1d7bd12a92475086f0728778";
 app.lang = window.navigator.language || navigator.browserLanguage;
 app.conf = `&appid=${app.key}&units=metric&lang=${app.lang}`;
 
-app.fetchData = async function () {
-    fetch(app.url)
+app.fetchData = async function (url) {
+    fetch(url)
         .then((response) => response.json())
         .then((data) => (app.weather = data))
         .then(app.processData)
@@ -96,8 +96,8 @@ app.fetchData = async function () {
         .catch((error) => console.log(error));
 };
 
-app.fetchWeather = async function () {
-    fetch(app.urlAll)
+app.fetchWeather = async function (url) {
+    fetch(url)
         .then((response) => response.json())
         .then((data) => (app.predictions = data))
         .then(app.saveHourly)
@@ -138,7 +138,7 @@ app.showColor = function () {
 };
 
 app.processData = function () {
-    if (app.weather.name) {
+    if (app.weather.coord) {
         app.currentWeather = {
             city: app.weather.name,
             temp: app.weather.main.temp.toFixed(0) + "°C",
@@ -147,9 +147,10 @@ app.processData = function () {
             tempMax: app.weather.main.temp_max.toFixed(0) + "°C",
             tempMin: app.weather.main.temp_min.toFixed(0) + "°C",
         };
-        app.lat = app.weather.coord.lat;
-        app.lon = app.weather.coord.lon;
-        app.urlAll = `https://api.openweathermap.org/data/2.5/onecall?lat=${app.lat}&lon=${app.lon}&exclude=current,minutely&appid=${app.key}&units=metric&lang=${app.lang}`;
+        let lat = app.weather.coord.lat;
+        let lon = app.weather.coord.lon;
+        let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely${app.conf}`;
+        app.fetchWeather(url);
     }
 };
 
@@ -202,17 +203,17 @@ app.showHourly = function () {
             let width =
                 document.getElementById("hourly-weather").scrollWidth -
                 document.getElementById("hourly-weather").clientWidth;
-            let scroll = document.getElementById("hourly-weather").scrollLeft;
+            let scroll = document.getElementById("hourly-weather");
             let move = 1;
             if (dir == true) {
-                document.getElementById("hourly-weather").scrollLeft += move;
-                if (scroll >= width) {
+                scroll.scrollLeft += move;
+                if (scroll.scrollLeft >= width) {
                     dir = false;
                 }
             }
             if (dir == false) {
-                document.getElementById("hourly-weather").scrollLeft -= move;
-                if (scroll <= 0) {
+                scroll.scrollLeft -= move;
+                if (scroll.scrollLeft <= 0) {
                     dir = true;
                 }
             }
@@ -224,12 +225,13 @@ app.saveDaily = function () {
     if (app.predictions.daily) {
         app.daily = [];
         let date = new Date();
-        const options = {
-            weekday: "long",
-        };
         app.predictions.daily.forEach((day) => {
             app.daily.push({
-                date: date.toLocaleDateString(app.lang, options).toUpperCase(),
+                date: date
+                    .toLocaleDateString(app.lang, {
+                        weekday: "long",
+                    })
+                    .toUpperCase(),
                 icon: day.weather[0].icon,
                 tempMin: day.temp.min.toFixed(0) + "°C",
                 tempMax: day.temp.max.toFixed(0) + "°C",
@@ -254,13 +256,12 @@ app.showDaily = function () {
     }
 };
 
-function search(e) {
+async function search(e) {
     e.preventDefault();
     let city = document.getElementById("entry").value;
     if (city) {
-        app.url = `https://api.openweathermap.org/data/2.5/weather?q=${city}${app.conf}`;
         clearInterval(app.slider);
-        app.fetchData();
-        app.fetchWeather();
+        let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}${app.conf}`;
+        app.fetchData(url);
     }
 }
