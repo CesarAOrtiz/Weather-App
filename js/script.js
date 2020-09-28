@@ -3,7 +3,7 @@
     document.getElementById("search").addEventListener("click", search, false);
     function layoutCurrentWeather() {
         html = `            
-        <div id="weather">
+        <div id="weather" class="mode">
             <h1 id="city">-?-</h1>
             <p id="temp">-°C</p>
             <div id="icon">
@@ -19,7 +19,7 @@
         html = "";
         for (var i = 0; i < 24; i++) {
             html += `
-            <div class="hourly-weather-list">
+            <div class="hourly-weather-list" class="mode">
                 <div id="hourly-icon-${i}">
                     <img width=100px height=100px src="icons/unknown.png" alt="Weather icon"/>
                 </div>
@@ -35,7 +35,7 @@
         html = "";
         for (var i = 0; i < 8; i++) {
             html += `
-        <div class="daily-weather-list">
+        <div class="daily-weather-list mode">
             <p id="daily-date-${i}">-/-/-</p>
             <p id="daily-temps-${i}">-°C / -°C</p>
             <div id="daily-icon-${i}">
