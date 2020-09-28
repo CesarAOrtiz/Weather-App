@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,700;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,700;1,700&display=swap");
 
 * {
     margin: 0;
@@ -7,7 +7,7 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 header {
@@ -27,9 +27,11 @@ header .logo {
 header,
 #main-footer {
     border-radius: 20px;
-    background: linear-gradient(to bottom,
-            rgb(224, 223, 223) 0%,
-            rgba(249, 249, 249, 1) 100%);
+    background: linear-gradient(
+        to bottom,
+        rgb(224, 223, 223) 0%,
+        rgba(249, 249, 249, 1) 100%
+    );
     width: 200px;
     font-style: italic;
 }
@@ -58,9 +60,11 @@ form {
 
 #entry {
     width: 400px;
-    background: linear-gradient(to bottom,
-            rgb(224, 223, 223) 0%,
-            rgba(249, 249, 249, 1) 100%);
+    background: linear-gradient(
+        to bottom,
+        rgb(224, 223, 223) 0%,
+        rgba(249, 249, 249, 1) 100%
+    );
 }
 
 #search {
@@ -71,9 +75,11 @@ form {
 
 #notification {
     border-radius: 20px;
-    background: linear-gradient(to bottom,
-            rgb(224, 223, 223) 0%,
-            rgba(249, 249, 249, 1) 100%);
+    background: linear-gradient(
+        to bottom,
+        rgb(224, 223, 223) 0%,
+        rgba(249, 249, 249, 1) 100%
+    );
     font-style: italic;
     margin: 0px 0px 25px 0px;
     padding: 5px 10px 5px 10px;
@@ -111,9 +117,11 @@ form {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: linear-gradient(to bottom,
-            rgb(224, 223, 223) 0%,
-            rgba(249, 249, 249, 1) 100%);
+    background: linear-gradient(
+        to bottom,
+        rgb(224, 223, 223) 0%,
+        rgba(249, 249, 249, 1) 100%
+    );
     padding: 20px 20px;
     margin: 0px 0px 20px 0px;
     width: 850px;
@@ -139,9 +147,11 @@ form {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: linear-gradient(to bottom,
-            rgb(224, 223, 223) 0%,
-            rgba(249, 249, 249, 1) 100%);
+    background: linear-gradient(
+        to bottom,
+        rgb(224, 223, 223) 0%,
+        rgba(249, 249, 249, 1) 100%
+    );
     width: 200px;
     margin: 0px 10px 20px 0px;
     border-radius: 10px;
@@ -168,11 +178,11 @@ h1 {
 }
 
 .max {
-    color: red;
+    color: rgba(226, 5, 5, 0.849);
 }
 
 .min {
-    color: blue;
+    color: rgba(4, 4, 182, 0.884);
 }
 
 #main-footer {
