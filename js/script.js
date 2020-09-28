@@ -123,20 +123,6 @@ app.showBG = function () {
     document.getElementById("bg").style.backgroundSize = `cover`;
 };
 
-app.showColor = function () {
-    let night = `
-        background: linear-gradient(to bottom,
-                rgb(224, 223, 223) 0%,
-                rgba(249, 249, 249, 1) 100%);
-        color: black;`;
-
-    let day = `
-        background: linear-gradient(to bottom,
-                rgb(73, 72, 72) 0%,
-                rgb(99, 98, 98) 100%);
-        color: white;`;
-};
-
 app.processData = function () {
     if (app.weather.coord) {
         app.currentWeather = {
@@ -165,9 +151,7 @@ app.showData = function () {
         temp.textContent = app.currentWeather.temp;
         icon.innerHTML = `<img src="icons/${app.currentWeather.icon}.png" alt="Weather icon"/>`;
         description.textContent = app.currentWeather.description;
-        temps.textContent = `${
-            app.currentWeather.tempMin + " / " + app.currentWeather.tempMax
-        }`;
+        temps.innerHTML = `<span class="min">${app.currentWeather.tempMin}</span> / <span class="max">${app.currentWeather.tempMax}</span>`;
     }
 };
 
@@ -250,7 +234,7 @@ app.showDaily = function () {
             let temp = document.getElementById(`daily-temps-${count}`);
             date.textContent = day.date;
             icon.innerHTML = `<img width=50px height=50px src="icons/${day.icon}.png" alt="Weather icon"/>`;
-            temp.textContent = `${day.tempMin + " / " + day.tempMax}`;
+            temp.innerHTML = `<span class="min">${day.tempMin}</span> / <span class="max">${day.tempMax}</span>`;
             count++;
         });
     }
