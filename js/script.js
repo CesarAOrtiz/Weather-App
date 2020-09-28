@@ -59,8 +59,9 @@
             enableHighAccuracy: true,
         });
     } else {
-        // document.querySelector("#notification").style.display = "block";
-        // document.querySelector("#notification").innerHTML = "<p>Browser doesn't Support Geolocation</p>";
+        document.getElementById("notification").style.display = "block";
+        document.getElementById("notification").innerHTML =
+            "<p>Browser doesn't Support Geolocation</p>";
     }
 
     function setPosition(position) {
@@ -74,8 +75,10 @@
     }
 
     function showError(error) {
-        // document.querySelector("#notification").style.display = "block";
-        // document.querySelector("#notification").innerHTML = `<p> ${error.message} </p>`;
+        document.getElementById("notification").style.display = "block";
+        document.getElementById(
+            "notification"
+        ).innerHTML = `<p> ${error.message} </p>`;
     }
 })();
 
