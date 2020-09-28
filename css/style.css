@@ -50,7 +50,7 @@ form {
 
 #entry,
 #search {
-    padding: 5px;
+    padding: 5px 10px 5px 10px;
     border-radius: 15px;
     margin: 10px 0px;
     border: none;
