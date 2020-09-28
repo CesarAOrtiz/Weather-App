@@ -67,7 +67,6 @@
     function setPosition(position) {
         let lat = position.coords.latitude;
         let lon = position.coords.longitude;
-        console.log(lat, lon);
         app.urlAll = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely${app.conf}`;
         app.url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}${app.conf}`;
         app.fetchData();
@@ -183,6 +182,27 @@ app.showHourly = function () {
             date.textContent = hour.date;
             count++;
         });
+        let dir = true;
+        document.getElementById("hourly-weather").scrollLeft = 0;
+        app.slider = setInterval(() => {
+            let width =
+                document.getElementById("hourly-weather").scrollWidth -
+                document.getElementById("hourly-weather").clientWidth;
+            let scroll = document.getElementById("hourly-weather").scrollLeft;
+            let move = 1;
+            if (dir == true) {
+                document.getElementById("hourly-weather").scrollLeft += move;
+                if (scroll >= width) {
+                    dir = false;
+                }
+            }
+            if (dir == false) {
+                document.getElementById("hourly-weather").scrollLeft -= move;
+                if (scroll <= 0) {
+                    dir = true;
+                }
+            }
+        }, 20);
     }
 };
 
@@ -225,6 +245,7 @@ function search(e) {
     let city = document.getElementById("entry").value;
     if (city) {
         app.url = `https://api.openweathermap.org/data/2.5/weather?q=${city}${app.conf}`;
+        clearInterval(app.slider);
         app.fetchData();
         app.fetchWeather();
     }

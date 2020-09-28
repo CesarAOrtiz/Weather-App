@@ -10,6 +10,8 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+input {}
+
 header {
     margin: 20px 30px;
     text-align: center;
@@ -53,6 +55,7 @@ form {
     margin: 10px 0px;
     border: none;
     outline: none;
+    font-style: italic;
 }
 
 #entry {
