@@ -123,6 +123,20 @@ app.showBG = function () {
     document.getElementById("bg").style.backgroundSize = `cover`;
 };
 
+app.showColor = function () {
+    let night = `
+        background: linear-gradient(to bottom,
+                rgb(224, 223, 223) 0%,
+                rgba(249, 249, 249, 1) 100%);
+        color: black;`;
+
+    let day = `
+        background: linear-gradient(to bottom,
+                rgb(73, 72, 72) 0%,
+                rgb(99, 98, 98) 100%);
+        color: white;`;
+};
+
 app.processData = function () {
     if (app.weather.name) {
         app.currentWeather = {
