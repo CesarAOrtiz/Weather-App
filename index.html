@@ -3,6 +3,11 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Updated information on the weather in any city"
+        />
+
         <title>Weather App</title>
         <link rel="stylesheet" href="css/style.css" />
         <link rel="icon" href="favicon/weather_sun.ico" />
@@ -13,7 +18,11 @@
         </header>
         <section id="main-content">
             <form action="GET">
-                <input type="text" id="entry" />
+                <input
+                    type="text"
+                    id="entry"
+                    aria-label="Text field for searching"
+                />
                 <button type="submit" id="search">Search</button>
             </form>
             <div id="notification" style="display: none" class="mode"></div>
