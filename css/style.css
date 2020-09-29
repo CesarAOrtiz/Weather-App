@@ -6,39 +6,40 @@
 
 body {
     font-family: sans-serif;
-    background: linear-gradient(to bottom,
-            rgb(48, 47, 47) 0%,
-            rgb(34, 34, 34) 100%);
+    background: linear-gradient(
+        to bottom,
+        rgb(48, 47, 47) 0%,
+        rgb(34, 34, 34) 100%
+    );
 }
 
 header {
     margin: 20px 30px;
-    text-align: center;
     box-shadow: 1px 5px 11px rgb(0, 0, 0, 0.3);
 }
 
-header .logo {
+header a {
     font-size: 2em;
-    text-transform: uppercase;
     font-weight: 700;
+    text-transform: uppercase;
     text-decoration: none;
     color: black;
 }
 
 header,
-#main-footer {
+footer {
     border-radius: 20px;
     width: 200px;
     font-style: italic;
+    text-align: center;
 }
 
-#main-footer {
+footer {
     padding: 5px;
-    text-align: center;
     margin: 0px auto 30px auto;
 }
 
-#main-footer a {
+footer a {
     text-decoration: none;
     color: black;
 }
@@ -59,9 +60,11 @@ form {
 
 #entry {
     width: 400px;
-    background: linear-gradient(to bottom,
-            rgb(224, 223, 223) 0%,
-            rgba(249, 249, 249, 1) 100%);
+    background: linear-gradient(
+        to bottom,
+        rgb(224, 223, 223) 0%,
+        rgba(249, 249, 249, 1) 100%
+    );
 }
 
 #search {
@@ -120,42 +123,35 @@ section {
 .hourly-weather-list {
     background-color: rgba(250, 245, 245, 0.5);
     width: 125px;
-    margin: 0px 10px 20px 0px;
-    border-radius: 10px;
-    padding: 0px 0px 5px 0px;
-    box-shadow: 1px 8px 11px rgb(0, 0, 0, 0.3);
 }
 
 .daily-weather-list {
     width: 200px;
-    margin: 0px 10px 20px 0px;
-    border-radius: 10px;
-    padding: 5px 0px;
-    box-shadow: 1px 8px 11px rgb(0, 0, 0, 0.3);
 }
 
-h1,
-p {
-    text-align: center;
+.hourly-weather-list,
+.daily-weather-list {
+    margin: 0px 10px 20px 0px;
+    padding: 5px 0px;
+    border-radius: 10px;
+    box-shadow: 1px 8px 11px rgb(0, 0, 0, 0.3);
 }
 
 p {
     font-style: normal;
 }
 
-h1 {
+h1,
+h2 {
     font-size: 2rem;
 }
 
-#temp {
-    font-size: 2em;
-    font-weight: 700;
-}
-
 .mode {
-    background: linear-gradient(to bottom,
-            rgb(224, 223, 223) 0%,
-            rgba(249, 249, 249, 1) 100%);
+    background: linear-gradient(
+        to bottom,
+        rgb(224, 223, 223) 0%,
+        rgba(249, 249, 249, 1) 100%
+    );
 }
 
 .max {

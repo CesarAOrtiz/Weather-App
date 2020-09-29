@@ -5,7 +5,7 @@
         html = `            
         <div id="weather" class="mode">
             <h1 id="city">-?-</h1>
-            <p id="temp">-°C</p>
+            <h2 id="temp">-°C</h2>
             <div id="icon">
                 <img src="icons/unknown.png" alt="Weather icon" />
             </div>
