@@ -220,6 +220,8 @@ app.saveDaily = function () {
                 date: date
                     .toLocaleDateString(app.lang, {
                         weekday: "long",
+                        day: "numeric",
+                        month: "numeric",
                     })
                     .toUpperCase(),
                 icon: day.weather[0].icon,
