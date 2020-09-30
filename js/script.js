@@ -7,7 +7,7 @@
             <h1 id="city">-?-</h1>
             <h2 id="temp">-°C</h2>
             <div id="icon">
-                <img src="icons/unknown.png" alt="Weather icon" />
+                <img width=50px height=50px src="icons/unknown.png" alt="Weather icon" />
             </div>
             <p id="description">?</p>
             <p id="temps">-°C / -°C</p>
@@ -36,8 +36,10 @@
         for (var i = 0; i < 8; i++) {
             html += `
         <div class="daily-weather-list mode">
-            <p id="daily-date-${i}">-/-/-</p>
-            <p id="daily-temps-${i}">-°C / -°C</p>
+            <div>
+                <p id="daily-date-${i}">-/-/-</p>
+                <p id="daily-temps-${i}">-°C / -°C</p>
+            </div>
             <div id="daily-icon-${i}">
                 <img src="icons/unknown.png" alt="Weather icon" />
             </div>

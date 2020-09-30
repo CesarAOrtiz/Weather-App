@@ -6,13 +6,15 @@
 
 body {
     font-family: sans-serif;
-    background: linear-gradient(to bottom,
-            rgb(48, 47, 47) 0%,
-            rgb(34, 34, 34) 100%);
+    background: linear-gradient(
+        to bottom,
+        rgb(48, 47, 47) 0%,
+        rgb(34, 34, 34) 100%
+    );
 }
 
 header {
-    margin: 20px 30px;
+    margin: 20px 5%;
     box-shadow: 1px 5px 11px rgb(0, 0, 0, 0.3);
 }
 
@@ -58,9 +60,11 @@ form {
 
 #entry {
     width: 400px;
-    background: linear-gradient(to bottom,
-            rgb(224, 223, 223) 0%,
-            rgba(249, 249, 249, 1) 100%);
+    background: linear-gradient(
+        to bottom,
+        rgb(224, 223, 223) 0%,
+        rgba(249, 249, 249, 1) 100%
+    );
 }
 
 #search {
@@ -124,8 +128,11 @@ section {
 
 .daily-weather-list {
     width: 200px;
+    flex-direction: row;
 }
-
+.daily-weather-list div {
+    text-align: center;
+}
 .hourly-weather-list,
 .daily-weather-list {
     margin: 0px 10px 20px 0px;
@@ -145,9 +152,11 @@ h2 {
 }
 
 .mode {
-    background: linear-gradient(to bottom,
-            rgb(224, 223, 223) 0%,
-            rgba(249, 249, 249, 1) 100%);
+    background: linear-gradient(
+        to bottom,
+        rgb(224, 223, 223) 0%,
+        rgba(249, 249, 249, 1) 100%
+    );
 }
 
 .max {
@@ -172,7 +181,8 @@ h2 {
 
 @media (max-width: 991px) {
     #daily-weather {
-        max-width: 675px;
+        max-width: 620px;
+        grid-template-columns: repeat(3, 1fr);
     }
 
     #hourly-weather {
@@ -190,7 +200,8 @@ h2 {
     }
 
     #daily-weather {
-        max-width: 460px;
+        max-width: 410px;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     #hourly-weather {
@@ -208,11 +219,15 @@ h2 {
     }
 
     #daily-weather {
-        max-width: 290px;
+        max-width: 260px;
+        grid-template-columns: repeat(1, 1fr);
     }
-
+    .daily-weather-list {
+        width: 260px;
+        justify-content: space-around;
+    }
     #hourly-weather {
-        max-width: 290px;
+        max-width: 280px;
     }
 
     #weather {
@@ -226,7 +241,12 @@ h2 {
     }
 
     #daily-weather {
-        max-width: 260px;
+        max-width: 250px;
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .daily-weather-list {
+        width: 250px;
+        justify-content: space-around;
     }
 
     #hourly-weather {
@@ -245,6 +265,11 @@ h2 {
 
     #daily-weather {
         max-width: 250px;
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .daily-weather-list {
+        width: 250px;
+        justify-content: space-around;
     }
 
     #hourly-weather {
