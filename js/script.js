@@ -50,18 +50,20 @@
     layoutDailyWeather();
 })();
 
-if ("geolocation" in navigator) {
-    navigator.geolocation.getCurrentPosition(setPosition, showError, {
-        enableHighAccuracy: true,
-    });
-} else {
-    showError("Browser doesn't Support Geolocation");
-}
-
 app = {};
 app.key = "2e908b1e1d7bd12a92475086f0728778";
 app.lang = window.navigator.language || navigator.browserLanguage;
 app.conf = `&appid=${app.key}&units=metric&lang=${app.lang}`;
+
+function getWeather() {
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(setPosition, showError, {
+            enableHighAccuracy: true,
+        });
+    } else {
+        showError("Browser doesn't Support Geolocation");
+    }
+}
 
 function setPosition(position) {
     let lat = position.coords.latitude;
@@ -240,5 +242,8 @@ async function search(e) {
         clearInterval(app.slider);
         let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}${app.conf}`;
         app.fetchData(url);
+        if (document.getElementById("notification").style.display != "none") {
+            document.getElementById("notification").style.display = "none";
+        }
     }
 }

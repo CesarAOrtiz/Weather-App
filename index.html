@@ -25,7 +25,9 @@
                 />
                 <button type="submit" id="search">Search</button>
             </form>
-            <div id="notification" style="display: none" class="mode"></div>
+            <div id="notification" class="mode" style="display: none">
+                <p>Press to get your weather</p>
+            </div>
             <div id="current-weather"></div>
             <div id="hourly-weather"></div>
             <div id="daily-weather"></div>
@@ -35,6 +37,6 @@
                 >2020 &copy; Cesar Ortiz</a
             >
         </footer>
-        <script src="js/script.js" defer></script>
+        <script src="js/script.js" defer onload="getWeather()"></script>
     </body>
 </html>
