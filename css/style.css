@@ -6,11 +6,9 @@
 
 body {
     font-family: sans-serif;
-    background: linear-gradient(
-        to bottom,
-        rgb(48, 47, 47) 0%,
-        rgb(34, 34, 34) 100%
-    );
+    background: linear-gradient(to bottom,
+            rgb(48, 47, 47) 0%,
+            rgb(34, 34, 34) 100%);
 }
 
 header {
@@ -60,11 +58,9 @@ form {
 
 #entry {
     width: 400px;
-    background: linear-gradient(
-        to bottom,
-        rgb(224, 223, 223) 0%,
-        rgba(249, 249, 249, 1) 100%
-    );
+    background: linear-gradient(to bottom,
+            rgb(224, 223, 223) 0%,
+            rgba(249, 249, 249, 1) 100%);
 }
 
 #search {
@@ -78,10 +74,10 @@ form {
     font-style: italic;
     margin: 0px 0px 25px 0px;
     padding: 5px 10px 5px 10px;
+    width: 90%;
+    text-align: center;
 }
-#notification:hover {
-    cursor: pointer;
-}
+
 .daily-weather-list,
 .hourly-weather-list,
 #weather,
@@ -150,11 +146,9 @@ h2 {
 }
 
 .mode {
-    background: linear-gradient(
-        to bottom,
-        rgb(224, 223, 223) 0%,
-        rgba(249, 249, 249, 1) 100%
-    );
+    background: linear-gradient(to bottom,
+            rgb(224, 223, 223) 0%,
+            rgba(249, 249, 249, 1) 100%);
 }
 
 .max {

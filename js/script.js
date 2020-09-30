@@ -57,9 +57,16 @@ app.conf = `&appid=${app.key}&units=metric&lang=${app.lang}`;
 
 function getWeather() {
     if ("geolocation" in navigator) {
-        navigator.geolocation.getCurrentPosition(setPosition, showError, {
-            enableHighAccuracy: true,
-        });
+        navigator.geolocation.getCurrentPosition(
+            setPosition,
+            showError({
+                message:
+                    "We could not access your location but you can use the search field",
+            }),
+            {
+                enableHighAccuracy: true,
+            }
+        );
     } else {
         showError("Browser doesn't Support Geolocation");
     }
