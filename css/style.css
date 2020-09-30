@@ -6,11 +6,9 @@
 
 body {
     font-family: sans-serif;
-    background: linear-gradient(
-        to bottom,
-        rgb(48, 47, 47) 0%,
-        rgb(34, 34, 34) 100%
-    );
+    background: linear-gradient(to bottom,
+            rgb(48, 47, 47) 0%,
+            rgb(34, 34, 34) 100%);
 }
 
 header {
@@ -60,11 +58,9 @@ form {
 
 #entry {
     width: 400px;
-    background: linear-gradient(
-        to bottom,
-        rgb(224, 223, 223) 0%,
-        rgba(249, 249, 249, 1) 100%
-    );
+    background: linear-gradient(to bottom,
+            rgb(224, 223, 223) 0%,
+            rgba(249, 249, 249, 1) 100%);
 }
 
 #search {
@@ -76,7 +72,7 @@ form {
 #notification {
     border-radius: 20px;
     font-style: italic;
-    margin: 0px 0px 25px 25px;
+    margin: 0px 25px 25px 25px;
     padding: 5px 10px 5px 10px;
     text-align: center;
 }
@@ -149,11 +145,9 @@ h2 {
 }
 
 .mode {
-    background: linear-gradient(
-        to bottom,
-        rgb(224, 223, 223) 0%,
-        rgba(249, 249, 249, 1) 100%
-    );
+    background: linear-gradient(to bottom,
+            rgb(224, 223, 223) 0%,
+            rgba(249, 249, 249, 1) 100%);
 }
 
 .max {
