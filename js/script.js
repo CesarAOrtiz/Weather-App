@@ -59,10 +59,12 @@ function getWeather() {
     if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(
             setPosition,
-            showError({
-                message:
-                    "We could not access your location but you can use the search field",
-            }),
+            () => {
+                showError({
+                    message:
+                        "We could not access your location but you can use the search field",
+                });
+            },
             {
                 enableHighAccuracy: true,
             }
