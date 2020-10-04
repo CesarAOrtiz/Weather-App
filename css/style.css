@@ -106,8 +106,7 @@ section {
     width: 850px;
 }
 
-#hourly-weather,
-#daily-weather {
+#hourly-weather {
     overflow: scroll;
     overflow-y: hidden;
     overflow-x: auto;
@@ -217,15 +216,19 @@ h2 {
     #entry {
         width: 200px;
     }
-
     #daily-weather {
         max-width: 260px;
         grid-template-columns: repeat(1, 1fr);
+        margin-bottom: 20px;
     }
+
     .daily-weather-list {
-        width: 260px;
+        width: 100%;
         justify-content: space-around;
+        margin: 1px;
+        padding: 0px 0px;
     }
+
     #hourly-weather {
         max-width: 280px;
     }
