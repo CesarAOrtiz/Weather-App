@@ -223,10 +223,10 @@ h2 {
     }
 
     .daily-weather-list {
-        width: 100%;
+        width: 260px;
         justify-content: space-around;
-        margin: 1px;
-        padding: 0px 0px;
+        padding: 0px;
+        margin: 2px 0px;
     }
 
     #hourly-weather {
